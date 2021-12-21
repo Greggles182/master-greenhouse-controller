@@ -14,6 +14,7 @@ radio.onReceivedMessage(RadioMessage.LightOff, function () {
         . . . . .
         . . . . .
         `)
+    pins.digitalWritePin(DigitalPin.P0, 0)
 })
 radio.onReceivedMessage(RadioMessage.HeaterOff, function () {
     basic.showLeds(`
@@ -23,6 +24,7 @@ radio.onReceivedMessage(RadioMessage.HeaterOff, function () {
         . . . . .
         . . . . .
         `)
+    pins.digitalWritePin(DigitalPin.P1, 0)
 })
 radio.onReceivedMessage(RadioMessage.HeaterOn, function () {
     basic.showLeds(`
@@ -32,6 +34,7 @@ radio.onReceivedMessage(RadioMessage.HeaterOn, function () {
         # # # # #
         # # # # #
         `)
+    pins.digitalWritePin(DigitalPin.P1, 1)
 })
 radio.onReceivedMessage(RadioMessage.WaterTrigger, function () {
     basic.showLeds(`
@@ -41,6 +44,9 @@ radio.onReceivedMessage(RadioMessage.WaterTrigger, function () {
         . . . . .
         . . . . .
         `)
+    pins.digitalWritePin(DigitalPin.P2, 1)
+    basic.pause(5000)
+    pins.digitalWritePin(DigitalPin.P2, 0)
 })
 radio.onReceivedMessage(RadioMessage.LightOn, function () {
     basic.showLeds(`
@@ -50,5 +56,6 @@ radio.onReceivedMessage(RadioMessage.LightOn, function () {
         # # # # #
         . . . . .
         `)
+    pins.digitalWritePin(DigitalPin.P0, 1)
 })
 radio.setGroup(1)
